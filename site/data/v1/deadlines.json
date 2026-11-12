@@ -1,0 +1,5142 @@
+{
+  "entries": [
+    {
+      "applies_to": "iOS and iPadOS apps uploaded to App Store Connect",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "iOS and iPadOS apps uploaded to App Store Connect must target iOS 13 or later."
+      },
+      "detect": {
+        "affected": {
+          "fact": "ios.deploymentTarget",
+          "semverLt": "13.0.0"
+        },
+        "requires": [
+          "ios.app"
+        ]
+      },
+      "effective": "2026-09-09",
+      "extension": null,
+      "fix": [
+        {
+          "context": "expo-cng-override",
+          "text": "Set ios.deploymentTarget to 13.0 or later in expo-build-properties, or remove it.",
+          "when": {
+            "exists": true,
+            "fact": "expo.buildProperties.ios.deploymentTarget"
+          }
+        },
+        {
+          "context": "xcode",
+          "text": "Set IPHONEOS_DEPLOYMENT_TARGET to 13.0 or later in the Xcode project and the Podfile platform."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "app-store/min-ios-13-2026",
+      "kind": "policy-floor",
+      "platform": "app-store",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "iOS and iPadOS apps uploaded to App Store Connect must target iOS 13 or later.",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/upcoming-requirements/"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "September 9, 2026",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/upcoming-requirements/"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "ios",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "iOS and iPadOS uploads must target iOS 13 or later",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "iOS and iPadOS apps uploaded to App Store Connect",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Starting April 2027: iOS and iPadOS apps must be built with the iOS & iPadOS 27 SDK or later and target iOS 15 or later."
+      },
+      "detect": {
+        "affected": {
+          "fact": "ios.deploymentTarget",
+          "semverLt": "15.0.0"
+        },
+        "requires": [
+          "ios.app"
+        ]
+      },
+      "effective": "2027-04-01",
+      "extension": null,
+      "fix": [
+        {
+          "context": "expo-cng-override",
+          "text": "Before April 2027, set ios.deploymentTarget to 15.0 or later in expo-build-properties, or remove it.",
+          "when": {
+            "exists": true,
+            "fact": "expo.buildProperties.ios.deploymentTarget"
+          }
+        },
+        {
+          "context": "xcode",
+          "text": "Before April 2027, set IPHONEOS_DEPLOYMENT_TARGET to 15.0 or later in the Xcode project and the Podfile platform."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "app-store/min-ios-15-2027",
+      "kind": "policy-floor",
+      "platform": "app-store",
+      "precision": "month",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "iOS and iPadOS apps must be built with the iOS & iPadOS 27 SDK or later and target iOS 15 or later",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/app-store/submitting/"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Starting April 2027",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/app-store/submitting/"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "ios",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "iOS and iPadOS uploads must target iOS 15 or later from April 2027",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Apps uploaded to App Store Connect (iOS, iPadOS, tvOS, visionOS and watchOS)",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Apps uploaded to App Store Connect must be built with Xcode 26 or later using an SDK for iOS 26, iPadOS 26, tvOS 26, visionOS 26, or watchOS 26."
+      },
+      "detect": {
+        "affected": {
+          "fact": "ios.xcode",
+          "semverLt": "26.0.0"
+        },
+        "requires": [
+          "ios.app"
+        ]
+      },
+      "effective": "2026-04-28",
+      "extension": null,
+      "fix": [
+        {
+          "context": "eas",
+          "text": "Use an EAS Build image with Xcode 26 or later (table eas-images), or remove the image to get the SDK default.",
+          "when": {
+            "exists": true,
+            "fact": "eas.profile.ios.image"
+          }
+        },
+        {
+          "context": "expo-cng",
+          "text": "Upgrade to an Expo SDK whose default EAS image has Xcode 26 or later (table expo-sdk-defaults)."
+        },
+        {
+          "context": "github-actions",
+          "text": "Build on a macOS runner with Xcode 26 or later and select it (table gha-runner-xcode)."
+        },
+        {
+          "context": "xcode",
+          "text": "Build and upload with Xcode 26 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "app-store/sdk-floor-2026",
+      "kind": "policy-floor",
+      "platform": "app-store",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Apps uploaded to App Store Connect must be built with Xcode 26 or later using an SDK for iOS 26, iPadOS 26, tvOS 26, visionOS 26, or watchOS 26.",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/upcoming-requirements/"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Since April 28, 2026",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/upcoming-requirements/"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "ios",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "Uploads must be built with Xcode 26 and the 26 SDKs",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Apps uploaded to App Store Connect (tvOS, visionOS and watchOS apps need their 27 SDKs too)",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Starting April 2027, apps and games uploaded to App Store Connect need to meet the following minimum requirements: iOS and iPadOS apps must be built with the iOS 27 & iPadOS 27 SDK or later."
+      },
+      "detect": {
+        "affected": {
+          "fact": "ios.xcode",
+          "semverLt": "27.0.0"
+        },
+        "requires": [
+          "ios.app"
+        ]
+      },
+      "effective": "2027-04-01",
+      "extension": null,
+      "fix": [
+        {
+          "context": "eas",
+          "text": "Before April 2027, use an EAS Build image with Xcode 27 or later (table eas-images), or remove the image to get the SDK default.",
+          "when": {
+            "exists": true,
+            "fact": "eas.profile.ios.image"
+          }
+        },
+        {
+          "context": "expo-cng",
+          "text": "Before April 2027, upgrade to an Expo SDK whose default EAS image has Xcode 27 or later (table expo-sdk-defaults)."
+        },
+        {
+          "context": "github-actions",
+          "text": "Before April 2027, build on a macOS runner with Xcode 27 or later and select it (table gha-runner-xcode)."
+        },
+        {
+          "context": "xcode",
+          "text": "Before April 2027, build and upload with Xcode 27 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "app-store/sdk-floor-2027",
+      "kind": "policy-floor",
+      "platform": "app-store",
+      "precision": "month",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Starting April 2027, apps and games uploaded to App Store Connect need to meet the following minimum requirements",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/?id=k1mtkt1k"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "iOS and iPadOS apps must be built with the iOS 27 & iPadOS 27 SDK or later",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.apple.com/news/?id=k1mtkt1k"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "ios",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "Uploads must be built with the 27 SDKs from April 2027",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "GitHub-hosted jobs on macos-14, macos-14-large or macos-14-xlarge",
+      "consequence": {
+        "mode": "breaks-ci",
+        "text": "GitHub Actions will fully retire all macOS 14 images on November 2, 2026."
+      },
+      "detect": {
+        "affected": {
+          "fact": "gha.runsOn",
+          "in": [
+            "macos-14",
+            "macos-14-large",
+            "macos-14-xlarge"
+          ]
+        },
+        "requires": []
+      },
+      "effective": "2026-11-02",
+      "extension": null,
+      "fix": [
+        {
+          "context": "github-actions",
+          "text": "Move these jobs to macos-latest, macos-15 or macos-26."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "github-actions/macos-14-retirement",
+      "kind": "removal",
+      "platform": "github-actions",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "GitHub Actions will fully retire all macOS 14 images on November 2, 2026.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/issues/13518"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "The macOS 14 runner image will be retired on November 2, 2026.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "ci",
+        "github-actions",
+        "ios"
+      ],
+      "timezone": "UTC",
+      "title": "macOS 14 runner images are retired",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "JavaScript actions whose action.yml declares runs.using node20, on GitHub-hosted runners",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Node 20 is no longer available on GitHub Actions runners. Runners now use Node 24 for JavaScript actions."
+      },
+      "detect": {
+        "affected": {
+          "eq": "node20",
+          "fact": "gha.actionRuntime"
+        },
+        "requires": []
+      },
+      "effective": "2026-09-23",
+      "extension": null,
+      "fix": [
+        {
+          "context": "github-actions",
+          "text": "Upgrade to a release of the action that declares node24 (table action-runtimes), and check the job still passes on Node 24."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "github-actions/node20-actions",
+      "kind": "removal",
+      "platform": "github-actions",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "This is the final notification that Node 20 is no longer available on GitHub Actions runners. Runners now use Node 24 for JavaScript actions.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Keep accepting legacy action manifests, but execute all JavaScript actions using node24.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner/blob/main/src/Runner.Worker/Handlers/HandlerFactory.cs"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "ci",
+        "github-actions"
+      ],
+      "timezone": "UTC",
+      "title": "Actions declaring node20 now run on Node 24",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "GitHub-hosted jobs on ubuntu-22.04 or ubuntu-22.04-arm (brownouts fail some jobs before the retirement)",
+      "consequence": {
+        "mode": "breaks-ci",
+        "text": "Deprecation will begin on September 17th, 2026 and the images will be fully unsupported by April 17th, 2027."
+      },
+      "detect": {
+        "affected": {
+          "fact": "gha.runsOn",
+          "in": [
+            "ubuntu-22.04",
+            "ubuntu-22.04-arm"
+          ]
+        },
+        "requires": []
+      },
+      "effective": "2027-04-17",
+      "extension": null,
+      "fix": [
+        {
+          "context": "github-actions",
+          "text": "Move ubuntu-22.04 jobs to ubuntu-24.04, ubuntu-26.04 or ubuntu-latest, and ubuntu-22.04-arm jobs to ubuntu-24.04-arm or ubuntu-26.04-arm."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "github-actions/ubuntu-22.04-retirement",
+      "kind": "removal",
+      "platform": "github-actions",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Deprecation: September 17th, 2026 Retirement: April 17th, 2027",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/issues/14254"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Workflows using the ubuntu-22.04, ubuntu-22.04-arm image labels will be terminated with an error.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/issues/14254"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "ci",
+        "github-actions"
+      ],
+      "timezone": "UTC",
+      "title": "Ubuntu 22.04 runner images are retired on April 17, 2027",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "GitHub-hosted x64 jobs on ubuntu-latest",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "ubuntu-latest moves from Ubuntu 24.04 to Ubuntu 26.04: This change will be rolled out over a period of several weeks beginning October 19, 2026. We plan to complete the migration by November 19, 2026."
+      },
+      "detect": {
+        "affected": {
+          "fact": "gha.runsOn",
+          "in": [
+            "ubuntu-latest"
+          ]
+        },
+        "requires": []
+      },
+      "effective": "2026-10-19",
+      "extension": null,
+      "fix": [
+        {
+          "context": "github-actions",
+          "text": "If a job fails on Ubuntu 26.04, pin ubuntu-24.04 while you fix it; use ubuntu-26.04 to test the new image explicitly."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "github-actions/ubuntu-latest-26.04",
+      "kind": "default-change",
+      "platform": "github-actions",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "This change will be rolled out over a period of several weeks beginning October 19, 2026. We plan to complete the migration by November 19, 2026.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/issues/14748"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "The ubuntu-latest label is ready to become the default version for Ubuntu 26.04.",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/issues/14748"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "ci",
+        "github-actions"
+      ],
+      "timezone": "UTC",
+      "title": "ubuntu-latest moves to Ubuntu 26.04",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Android apps on Google Play that use the Play Billing Library",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Existing apps still work, but new apps and updates must use supported versions: Play Billing Library 8 or later from August 31, 2026."
+      },
+      "detect": {
+        "affected": {
+          "fact": "billing.major",
+          "lt": 8
+        },
+        "requires": [
+          "android.app"
+        ]
+      },
+      "effective": "2026-08-31",
+      "extension": {
+        "how": "On request in Play Console",
+        "until": "2026-11-01"
+      },
+      "fix": [
+        {
+          "context": "gradle",
+          "text": "Set com.android.billingclient:billing (or billing-ktx) to 8.0.0 or later."
+        },
+        {
+          "context": "npm",
+          "text": "Upgrade the in-app purchase package to a release that uses Play Billing Library 8 or later (table billing-versions)."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "google-play/billing-8-2026",
+      "kind": "policy-floor",
+      "platform": "google-play",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "By Aug 31, 2026, all new apps and updates to existing apps must use Billing Library version 8 or later.",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.android.com/google/play/billing/deprecation-faq"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "7 August 31, 2026 November 1, 2026",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.android.com/google/play/billing/deprecation-faq"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "existing apps still work, but new apps and updates must use supported versions.",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.android.com/google/play/billing/deprecation-faq"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "android",
+        "billing",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "New apps and updates must use Play Billing Library 8 or later",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Android apps on Google Play that use the Play Billing Library",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Existing apps still work, but new apps and updates must use supported versions: Play Billing Library 9 or later from August 31, 2027."
+      },
+      "detect": {
+        "affected": {
+          "fact": "billing.major",
+          "lt": 9
+        },
+        "requires": [
+          "android.app"
+        ]
+      },
+      "effective": "2027-08-31",
+      "extension": {
+        "how": "On request in Play Console",
+        "until": "2027-11-01"
+      },
+      "fix": [
+        {
+          "context": "gradle",
+          "text": "Set com.android.billingclient:billing (or billing-ktx) to 9.0.0 or later."
+        },
+        {
+          "context": "npm",
+          "text": "Upgrade the in-app purchase package to a release that uses Play Billing Library 9 or later (table billing-versions)."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "google-play/billing-9-2027",
+      "kind": "policy-floor",
+      "platform": "google-play",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "8 August 31, 2027 November 1, 2027",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.android.com/google/play/billing/deprecation-faq"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "existing apps still work, but new apps and updates must use supported versions.",
+          "retrieved": "2026-11-11",
+          "url": "https://developer.android.com/google/play/billing/deprecation-faq"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "android",
+        "billing",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "New apps and updates must use Play Billing Library 9 or later",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Android phone and tablet apps already published on Google Play (Wear OS needs API 34, Android TV API 33, Android XR API 34, Android Automotive OS API 32)",
+      "consequence": {
+        "mode": "hides-app",
+        "text": "Existing apps must target Android 15 (API level 35) or higher to remain available to new users on devices running Android OS higher than your app's target API level."
+      },
+      "detect": {
+        "affected": {
+          "fact": "android.targetSdk",
+          "lt": 35
+        },
+        "requires": [
+          "android.app"
+        ]
+      },
+      "effective": "2026-08-31",
+      "extension": {
+        "how": "On request in Play Console",
+        "until": "2026-11-01"
+      },
+      "fix": [
+        {
+          "context": "expo-cng-override",
+          "text": "Set android.targetSdkVersion to 35 or higher in expo-build-properties (36 to publish updates), or remove it.",
+          "when": {
+            "exists": true,
+            "fact": "expo.buildProperties.android.targetSdkVersion"
+          }
+        },
+        {
+          "context": "expo-cng",
+          "text": "Upgrade to an Expo SDK whose default targetSdk is 35 or higher (table expo-sdk-defaults)."
+        },
+        {
+          "context": "gradle",
+          "text": "Set targetSdk = 35 or higher where the project defines it (36 to publish updates)."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "google-play/target-api-2026-existing",
+      "kind": "policy-floor",
+      "platform": "google-play",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Existing apps must target Android 15 (API level 35) or higher to remain available to new users on devices running Android OS higher than your app's target API level.",
+          "retrieved": "2026-11-11",
+          "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "existing apps (across mobile and Android Auto) must target Android 15 (API level 35) or higher by August 31, 2026",
+          "retrieved": "2026-11-11",
+          "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "android",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "Existing apps must target API 35 to stay available to new users",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Android phone and tablet apps published on Google Play (Wear OS and Android Automotive OS need API 35, Android TV and Android XR need API 34)",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "New apps and app updates must target Android 16 (API level 36) or higher to be submitted to Google Play."
+      },
+      "detect": {
+        "affected": {
+          "fact": "android.targetSdk",
+          "lt": 36
+        },
+        "requires": [
+          "android.app"
+        ]
+      },
+      "effective": "2026-08-31",
+      "extension": {
+        "how": "On request in Play Console",
+        "until": "2026-11-01"
+      },
+      "fix": [
+        {
+          "context": "expo-cng-override",
+          "text": "Set android.targetSdkVersion to 36 in expo-build-properties, or remove it.",
+          "when": {
+            "exists": true,
+            "fact": "expo.buildProperties.android.targetSdkVersion"
+          }
+        },
+        {
+          "context": "expo-cng",
+          "text": "Upgrade to an Expo SDK whose default targetSdk is 36 (table expo-sdk-defaults)."
+        },
+        {
+          "context": "gradle",
+          "text": "Set targetSdk = 36 where the project defines it."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "google-play/target-api-2026-updates",
+      "kind": "policy-floor",
+      "platform": "google-play",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "New apps and app updates must target Android 16 (API level 36) or higher to be submitted to Google Play",
+          "retrieved": "2026-11-11",
+          "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "You will be able to request an extension to November 1, 2026 if you need more time to update your app.",
+          "retrieved": "2026-11-11",
+          "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "android",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "New apps and updates must target API 36",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Android phone and tablet apps published on Google Play",
+      "consequence": {
+        "mode": "blocks-release",
+        "text": "Expected, not announced: new apps and app updates must target Android 17 (API level 37) or higher to be submitted to Google Play."
+      },
+      "detect": {
+        "affected": {
+          "fact": "android.targetSdk",
+          "lt": 37
+        },
+        "requires": [
+          "android.app"
+        ]
+      },
+      "effective": "2027-08-31",
+      "expected": {
+        "basis": "Google Play raised the target API level for new apps and updates on August 31 in 2025 (API 35) and 2026 (API 36); no API 37 requirement was announced on 2026-11-11.",
+        "confidence": "medium"
+      },
+      "extension": null,
+      "fix": [
+        {
+          "context": "expo-cng-override",
+          "text": "Plan to set android.targetSdkVersion to 37 in expo-build-properties, or remove it, once Google announces the requirement.",
+          "when": {
+            "exists": true,
+            "fact": "expo.buildProperties.android.targetSdkVersion"
+          }
+        },
+        {
+          "context": "expo-cng",
+          "text": "Plan an upgrade to an Expo SDK whose default targetSdk is 37 (table expo-sdk-defaults)."
+        },
+        {
+          "context": "gradle",
+          "text": "Plan to set targetSdk = 37 where the project defines it."
+        }
+      ],
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "google-play/target-api-2027-updates",
+      "kind": "policy-floor",
+      "platform": "google-play",
+      "precision": "month",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "Android 16 (API level 36)* August 31, 2026 August 31, 2026 Android 15(API level 35) August 31, 2025 August 31, 2025",
+          "retrieved": "2026-11-11",
+          "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+        }
+      ],
+      "status": "expected",
+      "supersedes": null,
+      "tags": [
+        "android",
+        "expo",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "New apps and updates expected to need API 37",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 18.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life since 2025-04-30 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "18.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-04-30",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-18-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "18.x | End-of-Life | Hydrogen | 2022-04-19 | 2022-10-25 | 2023-10-18 | 2025-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "18 (LTS) 2022-04-19 true 2022-10-25 true 2023-10-18 true 2025-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 18 reached end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 20.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life since 2026-04-30 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "20.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-04-30",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-20-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "20.x | End-of-Life | Iron | 2023-04-18 | 2023-10-24 | 2024-10-22 | 2026-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "20 (LTS) 2023-04-18 true 2023-10-24 true 2024-10-22 true 2026-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 20 reached end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 22.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life on 2027-04-30 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "22.x"
+        },
+        "requires": []
+      },
+      "effective": "2027-04-30",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-22-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "22.x | Maintenance LTS | Jod | 2024-04-24 | 2024-10-29 | 2025-10-21 | 2027-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "22 (LTS) 2024-04-24 true 2024-10-29 true 2025-10-21 false 2027-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 22 reaches end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 23.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life since 2025-06-01 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "23.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-06-01",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-23-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "23.x | End-of-Life | 2024-10-15 | - | 2025-04-01 | 2025-06-01",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "23 2024-10-16 false true 2025-04-01 true 2025-06-01",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 23 reached end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 24.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life on 2028-04-30 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "24.x"
+        },
+        "requires": []
+      },
+      "effective": "2028-04-30",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-24-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "24.x | Maintenance LTS | Krypton | 2025-05-06 | 2025-10-28 | 2026-10-20 | 2028-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "24 (LTS) 2025-05-06 true 2025-10-28 true 2026-10-20 false 2028-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 24 reaches end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 25.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life since 2026-06-01 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "25.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-06-01",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to Node.js 26 or a later LTS line."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-25-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "25.x | End-of-Life | 2025-10-15 | - | 2026-04-01 | 2026-06-01",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "25 2025-10-15 false true 2026-04-01 true 2026-06-01",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 25 reached end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects whose Node.js version (engines, .nvmrc, .node-version, setup-node or eas.json) is 26.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "End-of-life on 2029-04-30 in the Node.js release schedule."
+      },
+      "detect": {
+        "affected": {
+          "fact": "node.version",
+          "semverSatisfies": "26.x"
+        },
+        "requires": []
+      },
+      "effective": "2029-04-30",
+      "extension": null,
+      "fix": [
+        {
+          "context": "node",
+          "text": "Move to a newer Node.js LTS line once one is released."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/nodejs-26-eol",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "26.x | Active LTS | Lithium | 2026-05-05 | 2026-10-28 | 2027-10-20 | 2029-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/nodejs/Release/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "26 (LTS) 2026-05-05 true 2026-10-28 false 2027-10-27 false 2029-04-30",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/nodejs"
+        }
+      ],
+      "status": "announced",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "nodejs"
+      ],
+      "timezone": "UTC",
+      "title": "Node.js 26 reaches end of life",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-12-11"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.77.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2025-06-12: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.77.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-06-12",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.77-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.77.x | 2024-11-26 | 2025-01-21 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.77 2025-01-21 false true 2025-04-08 true 2025-06-12",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.77 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.78.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2025-08-12: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.78.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-08-12",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.78-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.78.x | 2025-01-15 | 2025-02-19 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.78 2025-02-19 false true 2025-06-12 true 2025-08-12",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.78 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.79.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2025-10-08: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.79.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-10-08",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.79-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.79.x | 2025-03-04 | 2025-04-08 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.79 2025-04-08 false true 2025-08-12 true 2025-10-08",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.79 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.80.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2025-12-10: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.80.x"
+        },
+        "requires": []
+      },
+      "effective": "2025-12-10",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.80-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.80.x | 2025-05-07 | 2025-06-12 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.80 2025-06-12 false true 2025-10-08 true 2025-12-10",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.80 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.81.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2026-02-11: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.81.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-02-11",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.81-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.81.x | 2025-07-10 | 2025-08-12 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.81 2025-08-12 false true 2025-12-10 true 2026-02-11",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.81 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.82.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2026-04-07: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.82.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-04-07",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.82-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.82.x | 2025-09-01 | 2025-10-06 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.82 2025-10-08 false true 2026-02-11 true 2026-04-07",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.82 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.83.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2026-06-09: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.83.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-06-09",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.83-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.83.x | 2025-11-03 | 2025-12-10 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.83 2025-12-10 false true 2026-04-07 true 2026-06-09",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.83 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.84.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2026-08-11: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.84.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-08-11",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.84-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.84.x | 2026-01-05 | 2026-02-09 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.84 2026-02-11 false true 2026-06-09 true 2026-08-11",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.84 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    {
+      "applies_to": "Projects that resolve react-native 0.85.x",
+      "consequence": {
+        "mode": "warning-only",
+        "text": "Unsupported since 2026-10-12: no new releases are to be expected."
+      },
+      "detect": {
+        "affected": {
+          "fact": "rn.version",
+          "semverSatisfies": "0.85.x"
+        },
+        "requires": []
+      },
+      "effective": "2026-10-12",
+      "extension": null,
+      "fix": [
+        {
+          "context": "react-native",
+          "text": "Upgrade to react-native 0.88 or later."
+        }
+      ],
+      "history": [
+        {
+          "change": "generated from endoflife.date",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "runtime/react-native-0.85-support",
+      "kind": "eol",
+      "platform": "runtime",
+      "precision": "day",
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "0.85.x | 2026-03-02 | 2026-04-06 | Unsupported",
+          "retrieved": "2026-11-11",
+          "url": "https://reactnative.dev/docs/releases"
+        },
+        {
+          "archive": null,
+          "kind": "secondary",
+          "quote": "0.85 2026-04-07 false true 2026-08-11 true 2026-10-12",
+          "retrieved": "2026-11-11",
+          "url": "https://endoflife.date/api/v1/products/react-native"
+        }
+      ],
+      "status": "in-effect",
+      "supersedes": null,
+      "tags": [
+        "runtime",
+        "react-native"
+      ],
+      "timezone": "UTC",
+      "title": "React Native 0.85 is unsupported",
+      "verification": {
+        "by": "eol-generate",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    }
+  ],
+  "generated": "2026-11-11",
+  "schemaVersion": 1,
+  "tables": {
+    "action-runtimes": {
+      "description": "runs.using of each major of the most used actions in Expo and React Native app workflows (actions used by at least 7 of 59 Expo and React Native app repos with workflows, counted 2026-11-11). Read at the moving v<major> tag, else the highest v<major>.x.y tag. An action or major not here is looked up through the GitHub API inside the Action, else unknown.",
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        },
+        {
+          "change": "regenerated from the sources",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "action-runtimes",
+      "key": "uses",
+      "rows": [
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/checkout/blob/v2/action.yml",
+          "uses": "actions/checkout@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/checkout/blob/v3/action.yml",
+          "uses": "actions/checkout@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/checkout/blob/v4/action.yml",
+          "uses": "actions/checkout@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/checkout/blob/v5/action.yml",
+          "uses": "actions/checkout@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/checkout/blob/v6/action.yml",
+          "uses": "actions/checkout@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/checkout",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/checkout/blob/v7/action.yml",
+          "uses": "actions/checkout@v7",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/setup-node/blob/v1/action.yml",
+          "uses": "actions/setup-node@v1",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/setup-node/blob/v2/action.yml",
+          "uses": "actions/setup-node@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/setup-node/blob/v3/action.yml",
+          "uses": "actions/setup-node@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/setup-node/blob/v4/action.yml",
+          "uses": "actions/setup-node@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/setup-node/blob/v5/action.yml",
+          "uses": "actions/setup-node@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/setup-node/blob/v6/action.yml",
+          "uses": "actions/setup-node@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-node",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/setup-node/blob/v7/action.yml",
+          "uses": "actions/setup-node@v7",
+          "using": "node24"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/upload-artifact/blob/v2/action.yml",
+          "uses": "actions/upload-artifact@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/upload-artifact/blob/v3/action.yml",
+          "uses": "actions/upload-artifact@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/upload-artifact/blob/v4/action.yml",
+          "uses": "actions/upload-artifact@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/upload-artifact/blob/v5/action.yml",
+          "uses": "actions/upload-artifact@v5",
+          "using": "node20"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/upload-artifact/blob/v6/action.yml",
+          "uses": "actions/upload-artifact@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/upload-artifact",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/upload-artifact/blob/v7/action.yml",
+          "uses": "actions/upload-artifact@v7",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/setup-java/blob/v1/action.yml",
+          "uses": "actions/setup-java@v1",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/setup-java/blob/v2/action.yml",
+          "uses": "actions/setup-java@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/setup-java/blob/v3/action.yml",
+          "uses": "actions/setup-java@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/setup-java/blob/v4/action.yml",
+          "uses": "actions/setup-java@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/setup-java/blob/v5/action.yml",
+          "uses": "actions/setup-java@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-java",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/setup-java/blob/v6/action.yml",
+          "uses": "actions/setup-java@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/download-artifact/blob/v2/action.yml",
+          "uses": "actions/download-artifact@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/download-artifact/blob/v3/action.yml",
+          "uses": "actions/download-artifact@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/download-artifact/blob/v4/action.yml",
+          "uses": "actions/download-artifact@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/download-artifact/blob/v5/action.yml",
+          "uses": "actions/download-artifact@v5",
+          "using": "node20"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/download-artifact/blob/v6/action.yml",
+          "uses": "actions/download-artifact@v6",
+          "using": "node20"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/download-artifact/blob/v7/action.yml",
+          "uses": "actions/download-artifact@v7",
+          "using": "node24"
+        },
+        {
+          "action": "actions/download-artifact",
+          "confidence": "certain",
+          "major": 8,
+          "ref": "v8",
+          "source": "https://github.com/actions/download-artifact/blob/v8/action.yml",
+          "uses": "actions/download-artifact@v8",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 0,
+          "ref": "v0.0.2",
+          "source": "https://github.com/actions/cache/blob/v0.0.2/action.yml",
+          "uses": "actions/cache@v0",
+          "using": "node12"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/cache/blob/v1/action.yml",
+          "uses": "actions/cache@v1",
+          "using": "node12"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/cache/blob/v2/action.yml",
+          "uses": "actions/cache@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/cache/blob/v3/action.yml",
+          "uses": "actions/cache@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/cache/blob/v4/action.yml",
+          "uses": "actions/cache@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/cache/blob/v5/action.yml",
+          "uses": "actions/cache@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/cache/blob/v6/action.yml",
+          "uses": "actions/cache@v6",
+          "using": "node24"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/expo/expo-github-action/blob/v4/action.yml",
+          "uses": "expo/expo-github-action@v4",
+          "using": "node12"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/expo/expo-github-action/blob/v5/action.yml",
+          "uses": "expo/expo-github-action@v5",
+          "using": "node12"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/expo/expo-github-action/blob/v6/action.yml",
+          "uses": "expo/expo-github-action@v6",
+          "using": "node12"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/expo/expo-github-action/blob/v7/action.yml",
+          "uses": "expo/expo-github-action@v7",
+          "using": "node16"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 8,
+          "ref": "v8",
+          "source": "https://github.com/expo/expo-github-action/blob/v8/action.yml",
+          "uses": "expo/expo-github-action@v8",
+          "using": "node20"
+        },
+        {
+          "action": "expo/expo-github-action",
+          "confidence": "certain",
+          "major": 9,
+          "ref": "v9",
+          "source": "https://github.com/expo/expo-github-action/blob/v9/action.yml",
+          "uses": "expo/expo-github-action@v9",
+          "using": "node24"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/github-script/blob/v1/action.yml",
+          "uses": "actions/github-script@v1",
+          "using": "node12"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/github-script/blob/v2/action.yml",
+          "uses": "actions/github-script@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/github-script/blob/v3/action.yml",
+          "uses": "actions/github-script@v3",
+          "using": "node12"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/github-script/blob/v4/action.yml",
+          "uses": "actions/github-script@v4",
+          "using": "node12"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/github-script/blob/v5/action.yml",
+          "uses": "actions/github-script@v5",
+          "using": "node12"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/github-script/blob/v6/action.yml",
+          "uses": "actions/github-script@v6",
+          "using": "node16"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/github-script/blob/v7/action.yml",
+          "uses": "actions/github-script@v7",
+          "using": "node20"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 8,
+          "ref": "v8",
+          "source": "https://github.com/actions/github-script/blob/v8/action.yml",
+          "uses": "actions/github-script@v8",
+          "using": "node24"
+        },
+        {
+          "action": "actions/github-script",
+          "confidence": "certain",
+          "major": 9,
+          "ref": "v9",
+          "source": "https://github.com/actions/github-script/blob/v9/action.yml",
+          "uses": "actions/github-script@v9",
+          "using": "node24"
+        },
+        {
+          "action": "softprops/action-gh-release",
+          "confidence": "certain",
+          "major": 0,
+          "ref": "v0.1.15",
+          "source": "https://github.com/softprops/action-gh-release/blob/v0.1.15/action.yml",
+          "uses": "softprops/action-gh-release@v0",
+          "using": "node16"
+        },
+        {
+          "action": "softprops/action-gh-release",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/softprops/action-gh-release/blob/v1/action.yml",
+          "uses": "softprops/action-gh-release@v1",
+          "using": "node16"
+        },
+        {
+          "action": "softprops/action-gh-release",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/softprops/action-gh-release/blob/v2/action.yml",
+          "uses": "softprops/action-gh-release@v2",
+          "using": "node20"
+        },
+        {
+          "action": "softprops/action-gh-release",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/softprops/action-gh-release/blob/v3/action.yml",
+          "uses": "softprops/action-gh-release@v3",
+          "using": "node24"
+        },
+        {
+          "action": "docker/login-action",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/docker/login-action/blob/v1/action.yml",
+          "uses": "docker/login-action@v1",
+          "using": "node12"
+        },
+        {
+          "action": "docker/login-action",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/docker/login-action/blob/v2/action.yml",
+          "uses": "docker/login-action@v2",
+          "using": "node16"
+        },
+        {
+          "action": "docker/login-action",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/docker/login-action/blob/v3/action.yml",
+          "uses": "docker/login-action@v3",
+          "using": "node20"
+        },
+        {
+          "action": "docker/login-action",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/docker/login-action/blob/v4/action.yml",
+          "uses": "docker/login-action@v4",
+          "using": "node24"
+        },
+        {
+          "action": "docker/setup-buildx-action",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/docker/setup-buildx-action/blob/v1/action.yml",
+          "uses": "docker/setup-buildx-action@v1",
+          "using": "node12"
+        },
+        {
+          "action": "docker/setup-buildx-action",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/docker/setup-buildx-action/blob/v2/action.yml",
+          "uses": "docker/setup-buildx-action@v2",
+          "using": "node16"
+        },
+        {
+          "action": "docker/setup-buildx-action",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/docker/setup-buildx-action/blob/v3/action.yml",
+          "uses": "docker/setup-buildx-action@v3",
+          "using": "node20"
+        },
+        {
+          "action": "docker/setup-buildx-action",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/docker/setup-buildx-action/blob/v4/action.yml",
+          "uses": "docker/setup-buildx-action@v4",
+          "using": "node24"
+        },
+        {
+          "action": "gradle/actions/setup-gradle",
+          "confidence": "certain",
+          "major": 0,
+          "ref": "v0",
+          "source": "https://github.com/gradle/actions/blob/v0/setup-gradle/action.yml",
+          "uses": "gradle/actions/setup-gradle@v0",
+          "using": "composite"
+        },
+        {
+          "action": "gradle/actions/setup-gradle",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/gradle/actions/blob/v3/setup-gradle/action.yml",
+          "uses": "gradle/actions/setup-gradle@v3",
+          "using": "node20"
+        },
+        {
+          "action": "gradle/actions/setup-gradle",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/gradle/actions/blob/v4/setup-gradle/action.yml",
+          "uses": "gradle/actions/setup-gradle@v4",
+          "using": "node20"
+        },
+        {
+          "action": "gradle/actions/setup-gradle",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/gradle/actions/blob/v5/setup-gradle/action.yml",
+          "uses": "gradle/actions/setup-gradle@v5",
+          "using": "node24"
+        },
+        {
+          "action": "gradle/actions/setup-gradle",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/gradle/actions/blob/v6/setup-gradle/action.yml",
+          "uses": "gradle/actions/setup-gradle@v6",
+          "using": "node24"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/pnpm/action-setup/blob/v1/action.yml",
+          "uses": "pnpm/action-setup@v1",
+          "using": "node12"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2.4.1",
+          "source": "https://github.com/pnpm/action-setup/blob/v2.4.1/action.yml",
+          "uses": "pnpm/action-setup@v2",
+          "using": "node16"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3.0.0",
+          "source": "https://github.com/pnpm/action-setup/blob/v3.0.0/action.yml",
+          "uses": "pnpm/action-setup@v3",
+          "using": "node20"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/pnpm/action-setup/blob/v4/action.yml",
+          "uses": "pnpm/action-setup@v4",
+          "using": "node20"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/pnpm/action-setup/blob/v5/action.yml",
+          "uses": "pnpm/action-setup@v5",
+          "using": "node24"
+        },
+        {
+          "action": "pnpm/action-setup",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/pnpm/action-setup/blob/v6/action.yml",
+          "uses": "pnpm/action-setup@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache/restore",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/cache/blob/v3/restore/action.yml",
+          "uses": "actions/cache/restore@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/cache/restore",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/cache/blob/v4/restore/action.yml",
+          "uses": "actions/cache/restore@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/cache/restore",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/cache/blob/v5/restore/action.yml",
+          "uses": "actions/cache/restore@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache/restore",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/cache/blob/v6/restore/action.yml",
+          "uses": "actions/cache/restore@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache/save",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/cache/blob/v3/save/action.yml",
+          "uses": "actions/cache/save@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/cache/save",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/cache/blob/v4/save/action.yml",
+          "uses": "actions/cache/save@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/cache/save",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/cache/blob/v5/save/action.yml",
+          "uses": "actions/cache/save@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/cache/save",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/cache/blob/v6/save/action.yml",
+          "uses": "actions/cache/save@v6",
+          "using": "node24"
+        },
+        {
+          "action": "android-actions/setup-android",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/android-actions/setup-android/blob/v1/action.yml",
+          "uses": "android-actions/setup-android@v1",
+          "using": "node12"
+        },
+        {
+          "action": "android-actions/setup-android",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/android-actions/setup-android/blob/v2/action.yml",
+          "uses": "android-actions/setup-android@v2",
+          "using": "node16"
+        },
+        {
+          "action": "android-actions/setup-android",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/android-actions/setup-android/blob/v3/action.yml",
+          "uses": "android-actions/setup-android@v3",
+          "using": "node20"
+        },
+        {
+          "action": "android-actions/setup-android",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/android-actions/setup-android/blob/v4/action.yml",
+          "uses": "android-actions/setup-android@v4",
+          "using": "node24"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/docker/build-push-action/blob/v1/action.yml",
+          "uses": "docker/build-push-action@v1",
+          "using": "docker"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/docker/build-push-action/blob/v2/action.yml",
+          "uses": "docker/build-push-action@v2",
+          "using": "node12"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/docker/build-push-action/blob/v3/action.yml",
+          "uses": "docker/build-push-action@v3",
+          "using": "node16"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/docker/build-push-action/blob/v4/action.yml",
+          "uses": "docker/build-push-action@v4",
+          "using": "node16"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/docker/build-push-action/blob/v5/action.yml",
+          "uses": "docker/build-push-action@v5",
+          "using": "node20"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/docker/build-push-action/blob/v6/action.yml",
+          "uses": "docker/build-push-action@v6",
+          "using": "node20"
+        },
+        {
+          "action": "docker/build-push-action",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/docker/build-push-action/blob/v7/action.yml",
+          "uses": "docker/build-push-action@v7",
+          "using": "node24"
+        },
+        {
+          "action": "reactivecircus/android-emulator-runner",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/reactivecircus/android-emulator-runner/blob/v1/action.yml",
+          "uses": "reactivecircus/android-emulator-runner@v1",
+          "using": "node12"
+        },
+        {
+          "action": "reactivecircus/android-emulator-runner",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/reactivecircus/android-emulator-runner/blob/v2/action.yml",
+          "uses": "reactivecircus/android-emulator-runner@v2",
+          "using": "node24"
+        },
+        {
+          "action": "ruby/setup-ruby",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1.338.0",
+          "source": "https://github.com/ruby/setup-ruby/blob/v1.338.0/action.yml",
+          "uses": "ruby/setup-ruby@v1",
+          "using": "node24"
+        },
+        {
+          "action": "actions/deploy-pages",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/deploy-pages/blob/v1/action.yml",
+          "uses": "actions/deploy-pages@v1",
+          "using": "node16"
+        },
+        {
+          "action": "actions/deploy-pages",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/deploy-pages/blob/v2/action.yml",
+          "uses": "actions/deploy-pages@v2",
+          "using": "node16"
+        },
+        {
+          "action": "actions/deploy-pages",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/deploy-pages/blob/v3/action.yml",
+          "uses": "actions/deploy-pages@v3",
+          "using": "node20"
+        },
+        {
+          "action": "actions/deploy-pages",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/deploy-pages/blob/v4/action.yml",
+          "uses": "actions/deploy-pages@v4",
+          "using": "node20"
+        },
+        {
+          "action": "actions/deploy-pages",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/deploy-pages/blob/v5/action.yml",
+          "uses": "actions/deploy-pages@v5",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/setup-python/blob/v1/action.yml",
+          "uses": "actions/setup-python@v1",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/setup-python/blob/v2/action.yml",
+          "uses": "actions/setup-python@v2",
+          "using": "node12"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/setup-python/blob/v3/action.yml",
+          "uses": "actions/setup-python@v3",
+          "using": "node16"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/setup-python/blob/v4/action.yml",
+          "uses": "actions/setup-python@v4",
+          "using": "node16"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/setup-python/blob/v5/action.yml",
+          "uses": "actions/setup-python@v5",
+          "using": "node20"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/actions/setup-python/blob/v6/action.yml",
+          "uses": "actions/setup-python@v6",
+          "using": "node24"
+        },
+        {
+          "action": "actions/setup-python",
+          "confidence": "certain",
+          "major": 7,
+          "ref": "v7",
+          "source": "https://github.com/actions/setup-python/blob/v7/action.yml",
+          "uses": "actions/setup-python@v7",
+          "using": "node24"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 0,
+          "ref": "v0",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v0/action.yml",
+          "uses": "actions/upload-pages-artifact@v0",
+          "using": "composite"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v1/action.yml",
+          "uses": "actions/upload-pages-artifact@v1",
+          "using": "composite"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v2/action.yml",
+          "uses": "actions/upload-pages-artifact@v2",
+          "using": "composite"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v3/action.yml",
+          "uses": "actions/upload-pages-artifact@v3",
+          "using": "composite"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v4/action.yml",
+          "uses": "actions/upload-pages-artifact@v4",
+          "using": "composite"
+        },
+        {
+          "action": "actions/upload-pages-artifact",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/actions/upload-pages-artifact/blob/v5/action.yml",
+          "uses": "actions/upload-pages-artifact@v5",
+          "using": "composite"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/docker/metadata-action/blob/v1/action.yml",
+          "uses": "docker/metadata-action@v1",
+          "using": "node12"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/docker/metadata-action/blob/v2/action.yml",
+          "uses": "docker/metadata-action@v2",
+          "using": "node12"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 3,
+          "ref": "v3",
+          "source": "https://github.com/docker/metadata-action/blob/v3/action.yml",
+          "uses": "docker/metadata-action@v3",
+          "using": "node12"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 4,
+          "ref": "v4",
+          "source": "https://github.com/docker/metadata-action/blob/v4/action.yml",
+          "uses": "docker/metadata-action@v4",
+          "using": "node16"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 5,
+          "ref": "v5",
+          "source": "https://github.com/docker/metadata-action/blob/v5/action.yml",
+          "uses": "docker/metadata-action@v5",
+          "using": "node20"
+        },
+        {
+          "action": "docker/metadata-action",
+          "confidence": "certain",
+          "major": 6,
+          "ref": "v6",
+          "source": "https://github.com/docker/metadata-action/blob/v6/action.yml",
+          "uses": "docker/metadata-action@v6",
+          "using": "node24"
+        },
+        {
+          "action": "oven-sh/setup-bun",
+          "confidence": "certain",
+          "major": 0,
+          "ref": "v0.1.8",
+          "source": "https://github.com/oven-sh/setup-bun/blob/v0.1.8/action.yml",
+          "uses": "oven-sh/setup-bun@v0",
+          "using": "node16"
+        },
+        {
+          "action": "oven-sh/setup-bun",
+          "confidence": "certain",
+          "major": 1,
+          "ref": "v1",
+          "source": "https://github.com/oven-sh/setup-bun/blob/v1/action.yml",
+          "uses": "oven-sh/setup-bun@v1",
+          "using": "node20"
+        },
+        {
+          "action": "oven-sh/setup-bun",
+          "confidence": "certain",
+          "major": 2,
+          "ref": "v2",
+          "source": "https://github.com/oven-sh/setup-bun/blob/v2/action.yml",
+          "uses": "oven-sh/setup-bun@v2",
+          "using": "node24"
+        }
+      ],
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node16",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/checkout/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-node/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-artifact/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-java/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/download-artifact/blob/v8/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v0.0.2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node16",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v8/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/expo/expo-github-action/blob/v9/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node16",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v8/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/github-script/blob/v9/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node16\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/softprops/action-gh-release/blob/v0.1.15/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node16\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/softprops/action-gh-release/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node20\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/softprops/action-gh-release/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node24\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/softprops/action-gh-release/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/login-action/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/login-action/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/login-action/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/login-action/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/setup-buildx-action/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/setup-buildx-action/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/setup-buildx-action/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/setup-buildx-action/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"composite\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/gradle/actions/blob/v0/setup-gradle/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/gradle/actions/blob/v3/setup-gradle/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/gradle/actions/blob/v4/setup-gradle/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/gradle/actions/blob/v5/setup-gradle/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/gradle/actions/blob/v6/setup-gradle/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node12",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node16",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v2.4.1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v3.0.0/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/pnpm/action-setup/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v3/restore/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v4/restore/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v5/restore/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v6/restore/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v3/save/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v4/save/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v5/save/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/cache/blob/v6/save/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/android-actions/setup-android/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/android-actions/setup-android/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node20",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/android-actions/setup-android/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: node24",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/android-actions/setup-android/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: docker",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/build-push-action/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/reactivecircus/android-emulator-runner/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/reactivecircus/android-emulator-runner/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/ruby/setup-ruby/blob/v1.338.0/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/deploy-pages/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/deploy-pages/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/deploy-pages/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/deploy-pages/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/deploy-pages/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/setup-python/blob/v7/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v0/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: composite",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/upload-pages-artifact/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v2/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node12'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v3/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node16'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v4/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node20'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v5/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: 'node24'",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/docker/metadata-action/blob/v6/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node16\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/oven-sh/setup-bun/blob/v0.1.8/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node20\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/oven-sh/setup-bun/blob/v1/action.yml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "using: \"node24\"",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/oven-sh/setup-bun/blob/v2/action.yml"
+        }
+      ],
+      "title": "JavaScript action runtimes by major version",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-25"
+      }
+    },
+    "billing-versions": {
+      "description": "For react-native-iap, expo-iap and react-native-purchases, the Google Play Billing Library major each range of package versions declares, measured from the published tarballs and POMs.",
+      "history": [
+        {
+          "change": "created from the T0.4 measurement",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "billing-versions",
+      "key": "range",
+      "rows": [
+        {
+          "billing": [
+            "6.0.1",
+            "6.1.0"
+          ],
+          "billingMajor": 6,
+          "confidence": "inferred",
+          "from": "12.12.2",
+          "overridable": true,
+          "package": "react-native-iap",
+          "range": "react-native-iap@12.12.2 - 12.14.1",
+          "source": "https://cdn.jsdelivr.net/npm/react-native-iap@12.12.2/android/gradle.properties",
+          "to": "12.14.1"
+        },
+        {
+          "billing": [
+            "7.0.0"
+          ],
+          "billingMajor": 7,
+          "confidence": "inferred",
+          "from": "12.15.0",
+          "overridable": true,
+          "package": "react-native-iap",
+          "range": "react-native-iap@12.15.0 - 13.0.4",
+          "source": "https://cdn.jsdelivr.net/npm/react-native-iap@12.15.0/android/gradle.properties",
+          "to": "13.0.4"
+        },
+        {
+          "billing": [
+            "8.0.0",
+            "8.1.0",
+            "8.2.1",
+            "8.3.0"
+          ],
+          "billingMajor": 8,
+          "confidence": "inferred",
+          "from": "14.0.0",
+          "overridable": false,
+          "package": "react-native-iap",
+          "range": "react-native-iap@14.0.0 - 15.3.6",
+          "source": "https://cdn.jsdelivr.net/npm/react-native-iap@14.0.0/android/build.gradle",
+          "to": "15.3.6"
+        },
+        {
+          "billing": [
+            "9.1.0"
+          ],
+          "billingMajor": 9,
+          "confidence": "inferred",
+          "from": "15.4.0",
+          "overridable": false,
+          "package": "react-native-iap",
+          "range": "react-native-iap@15.4.0 - 17.3.5",
+          "source": "https://repo1.maven.org/maven2/io/github/hyochan/openiap/openiap-google/2.3.0/openiap-google-2.3.0.pom",
+          "to": "17.3.5",
+          "via": "openiap-versions.json google 2.3.0, io.github.hyochan.openiap:openiap-google 2.3.0"
+        },
+        {
+          "billing": [
+            "7.0.0"
+          ],
+          "billingMajor": 7,
+          "confidence": "inferred",
+          "from": "2.0.0",
+          "overridable": false,
+          "package": "expo-iap",
+          "range": "expo-iap@2.0.0 - 2.2.11",
+          "source": "https://cdn.jsdelivr.net/npm/expo-iap@2.0.0/android/build.gradle",
+          "to": "2.2.11"
+        },
+        {
+          "billing": [],
+          "billingMajor": null,
+          "confidence": "inferred",
+          "from": "2.3.0",
+          "overridable": false,
+          "package": "expo-iap",
+          "range": "expo-iap@2.3.0 - 2.3.0",
+          "reason": "android/build.gradle declares no Billing Library dependency",
+          "source": "https://cdn.jsdelivr.net/npm/expo-iap@2.3.0/android/build.gradle",
+          "to": "2.3.0"
+        },
+        {
+          "billing": [
+            "7.0.0"
+          ],
+          "billingMajor": 7,
+          "confidence": "inferred",
+          "from": "2.3.1",
+          "overridable": false,
+          "package": "expo-iap",
+          "range": "expo-iap@2.3.1 - 2.6.3",
+          "source": "https://cdn.jsdelivr.net/npm/expo-iap@2.3.1/android/build.gradle",
+          "to": "2.6.3"
+        },
+        {
+          "billing": [
+            "8.0.0",
+            "8.1.0",
+            "8.2.1",
+            "8.3.0"
+          ],
+          "billingMajor": 8,
+          "confidence": "inferred",
+          "from": "2.7.0",
+          "overridable": false,
+          "package": "expo-iap",
+          "range": "expo-iap@2.7.0 - 4.3.6",
+          "source": "https://cdn.jsdelivr.net/npm/expo-iap@2.7.0/android/build.gradle",
+          "to": "4.3.6"
+        },
+        {
+          "billing": [
+            "9.1.0"
+          ],
+          "billingMajor": 9,
+          "confidence": "inferred",
+          "from": "4.4.0",
+          "overridable": false,
+          "package": "expo-iap",
+          "range": "expo-iap@4.4.0 - 6.4.3",
+          "source": "https://repo1.maven.org/maven2/io/github/hyochan/openiap/openiap-google/2.3.0/openiap-google-2.3.0.pom",
+          "to": "6.4.3",
+          "via": "openiap-versions.json google 2.3.0, io.github.hyochan.openiap:openiap-google 2.3.0"
+        },
+        {
+          "billing": [
+            "5.2.1"
+          ],
+          "billingMajor": 5,
+          "confidence": "inferred",
+          "from": "6.7.1",
+          "overridable": false,
+          "package": "react-native-purchases",
+          "range": "react-native-purchases@6.7.1 - 6.7.2",
+          "source": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/6.9.6/purchases-6.9.6.pom",
+          "to": "6.7.2",
+          "via": "purchases-hybrid-common 6.3.1, com.revenuecat.purchases:purchases 6.9.6"
+        },
+        {
+          "billing": [
+            "6.1.0",
+            "6.2.1"
+          ],
+          "billingMajor": 6,
+          "confidence": "inferred",
+          "from": "7.15.0",
+          "overridable": false,
+          "package": "react-native-purchases",
+          "range": "react-native-purchases@7.15.0 - 7.28.1",
+          "source": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/7.3.3/purchases-7.3.3.pom",
+          "to": "7.28.1",
+          "via": "purchases-hybrid-common 8.10.1, com.revenuecat.purchases:purchases 7.3.3"
+        },
+        {
+          "billing": [
+            "7.0.0",
+            "7.1.1"
+          ],
+          "billingMajor": 7,
+          "confidence": "inferred",
+          "from": "8.0.0",
+          "overridable": false,
+          "package": "react-native-purchases",
+          "range": "react-native-purchases@8.0.0 - 8.12.0",
+          "source": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/8.3.1/purchases-8.3.1.pom",
+          "to": "8.12.0",
+          "via": "purchases-hybrid-common 13.0.0, com.revenuecat.purchases:purchases 8.3.1"
+        },
+        {
+          "billing": [
+            "8.0.0",
+            "8.3.0"
+          ],
+          "billingMajor": 8,
+          "confidence": "inferred",
+          "from": "9.0.0",
+          "overridable": false,
+          "package": "react-native-purchases",
+          "range": "react-native-purchases@9.0.0 - 10.16.0",
+          "source": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/9.1.0/purchases-9.1.0.pom",
+          "to": "10.16.0",
+          "via": "purchases-hybrid-common 15.0.0, com.revenuecat.purchases:purchases 9.1.0"
+        },
+        {
+          "billing": [
+            "9.1.0"
+          ],
+          "billingMajor": 9,
+          "confidence": "inferred",
+          "from": "11.0.0",
+          "overridable": false,
+          "package": "react-native-purchases",
+          "range": "react-native-purchases@11.0.0 - 11.0.1",
+          "source": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/11.0.0/purchases-11.0.0.pom",
+          "to": "11.0.1",
+          "via": "purchases-hybrid-common 20.1.0, com.revenuecat.purchases:purchases 11.0.0"
+        }
+      ],
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "RNIap_playBillingSdkVersion=6.0.1",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native-iap@12.12.2/android/gradle.properties"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "RNIap_playBillingSdkVersion=7.0.0",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native-iap@12.15.0/android/gradle.properties"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "// Google Play Billing Library implementation 'com.android.billingclient:billing-ktx:8.0.0'",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native-iap@14.0.0/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 9.1.0",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/io/github/hyochan/openiap/openiap-google/2.3.0/openiap-google-2.3.0.pom"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "implementation \"com.android.billingclient:billing-ktx:7.0.0\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-iap@2.0.0/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "useCoreDependencies() useExpoPublishing()",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-iap@2.3.0/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "implementation \"com.android.billingclient:billing-ktx:7.0.0\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-iap@2.3.1/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "implementation \"com.android.billingclient:billing-ktx:8.0.0\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-iap@2.7.0/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 5.2.1",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/6.9.6/purchases-6.9.6.pom"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 6.1.0",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/7.3.3/purchases-7.3.3.pom"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 7.0.0",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/8.3.1/purchases-8.3.1.pom"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 8.0.0",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/9.1.0/purchases-9.1.0.pom"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "com.android.billingclient billing 9.1.0",
+          "retrieved": "2026-11-11",
+          "url": "https://repo1.maven.org/maven2/com/revenuecat/purchases/purchases/11.0.0/purchases-11.0.0.pom"
+        }
+      ],
+      "title": "Google Play Billing Library version per IAP package version",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-25"
+      }
+    },
+    "eas-images": {
+      "description": "Every iOS server image on the EAS Build infrastructure page, with the aliases the page lists (latest, sdk-<N>, former names), macOS and Xcode. An eas.json image that is not here, and the auto alias, resolve to unknown.",
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "eas-images",
+      "key": "image",
+      "rows": [
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-tahoe-26.6-xcode-27.2",
+          "macos": "Tahoe 26.6.2",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "27.2",
+          "xcodeBuild": "27B52"
+        },
+        {
+          "aliases": [
+            "latest",
+            "sdk-58"
+          ],
+          "confidence": "certain",
+          "image": "macos-tahoe-26.6-xcode-27.1",
+          "macos": "Tahoe 26.6.2",
+          "prerelease": true,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "27.1",
+          "xcodeBuild": "27A9275"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-tahoe-26.6-xcode-27.0",
+          "macos": "Tahoe 26.6.2",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "27.0",
+          "xcodeBuild": "27A266a"
+        },
+        {
+          "aliases": [
+            "sdk-57"
+          ],
+          "confidence": "certain",
+          "image": "macos-tahoe-26.5-xcode-26.6",
+          "macos": "Tahoe 26.5.2",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "26.6",
+          "xcodeBuild": "17F113"
+        },
+        {
+          "aliases": [
+            "sdk-56"
+          ],
+          "confidence": "certain",
+          "image": "macos-tahoe-26.4-xcode-26.4",
+          "macos": "Tahoe 26.4.1",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "26.4",
+          "xcodeBuild": "17E202"
+        },
+        {
+          "aliases": [
+            "sdk-55"
+          ],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.6-xcode-26.2",
+          "macos": "Sequoia 15.6.1",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "26.2",
+          "xcodeBuild": "17C52"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.6-xcode-26.1",
+          "macos": "Sequoia 15.6.1",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "26.1",
+          "xcodeBuild": "17B55"
+        },
+        {
+          "aliases": [
+            "sdk-54",
+            "macos-sequoia-15.5-xcode-26.0"
+          ],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.6-xcode-26.0",
+          "macos": "Sequoia 15.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "26.0",
+          "xcodeBuild": "17A324"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.6-xcode-16.4",
+          "macos": "Sequoia 15.6",
+          "note": "recommended for SDK 54 if you don't want to use Xcode 26",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.4",
+          "xcodeBuild": "16F6"
+        },
+        {
+          "aliases": [
+            "sdk-53"
+          ],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.5-xcode-16.4",
+          "macos": "Sequoia 15.5",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.4",
+          "xcodeBuild": "16E140"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.4-xcode-16.3",
+          "macos": "Sequoia 15.4.1",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.3",
+          "xcodeBuild": "16E140"
+        },
+        {
+          "aliases": [
+            "sdk-52"
+          ],
+          "confidence": "certain",
+          "image": "macos-sequoia-15.3-xcode-16.2",
+          "macos": "Sequoia 15.3",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.2",
+          "xcodeBuild": "16C5032a"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sonoma-14.6-xcode-16.1",
+          "macos": "Sonoma 14.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.1",
+          "xcodeBuild": "16B40"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sonoma-14.6-xcode-16.0",
+          "macos": "Sonoma 14.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "16.0",
+          "xcodeBuild": "16A242d"
+        },
+        {
+          "aliases": [
+            "sdk-51",
+            "sdk-50",
+            "sdk-49"
+          ],
+          "confidence": "certain",
+          "image": "macos-sonoma-14.5-xcode-15.4",
+          "macos": "Sonoma 14.5",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "15.4",
+          "xcodeBuild": "15F31d"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-sonoma-14.4-xcode-15.3",
+          "macos": "Sonoma 14.4.1",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "15.3",
+          "xcodeBuild": "15E204a"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-ventura-13.6-xcode-15.2",
+          "macos": "Ventura 13.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "15.2",
+          "xcodeBuild": "15C500b"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-ventura-13.6-xcode-15.1",
+          "macos": "Ventura 13.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "15.1",
+          "xcodeBuild": "15C65"
+        },
+        {
+          "aliases": [],
+          "confidence": "certain",
+          "image": "macos-ventura-13.6-xcode-15.0",
+          "macos": "Ventura 13.6",
+          "prerelease": false,
+          "source": "https://docs.expo.dev/build-reference/infrastructure/",
+          "xcode": "15.0",
+          "xcodeBuild": "15A240d"
+        }
+      ],
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "If you do not provide image in eas.json, your build by default will use the auto alias.",
+          "retrieved": "2026-11-11",
+          "url": "https://docs.expo.dev/build-reference/infrastructure/"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "SDK aliases will be updated with every new SDK release.",
+          "retrieved": "2026-11-11",
+          "url": "https://docs.expo.dev/build-reference/infrastructure/"
+        }
+      ],
+      "title": "EAS Build iOS images and their Xcode",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    },
+    "expo-sdk-defaults": {
+      "description": "Per Expo SDK, the react-native version it pins, the default targetSdk and compileSdk of a fresh project, the expo-root-project fallback values, the EAS iOS image carrying the SDK's alias with its Xcode, and the default iOS deployment target of a prebuild.",
+      "history": [
+        {
+          "change": "created from the T0.3 measurement",
+          "date": "2026-11-11"
+        },
+        {
+          "change": "added the default iOS deployment target from the Podfiles",
+          "date": "2026-11-12"
+        }
+      ],
+      "id": "expo-sdk-defaults",
+      "key": "sdk",
+      "rows": [
+        {
+          "compileSdk": 35,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-sequoia-15.3-xcode-16.2",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "16.2",
+          "expo": "52.0.49",
+          "iosDeploymentTarget": "15.1",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@52.0.79/ios/Podfile",
+          "reactNative": "0.76.9",
+          "sdk": 52,
+          "source": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@52.0.79/android/build.gradle",
+          "targetSdk": 34
+        },
+        {
+          "compileSdk": 35,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-sequoia-15.5-xcode-16.4",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "16.4",
+          "expo": "53.0.27",
+          "iosDeploymentTarget": "15.1",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@53.0.42/ios/Podfile",
+          "pluginFallbackCompileSdk": 35,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@2.1.15/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 35,
+          "reactNative": "0.79.6",
+          "sdk": 53,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.79.6/gradle/libs.versions.toml",
+          "targetSdk": 35
+        },
+        {
+          "compileSdk": 36,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-sequoia-15.6-xcode-26.0",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "26.0",
+          "expo": "54.0.38",
+          "iosDeploymentTarget": "15.1",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@54.0.54/ios/Podfile",
+          "pluginFallbackCompileSdk": 35,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@3.0.28/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 35,
+          "reactNative": "0.81.5",
+          "sdk": 54,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.81.5/gradle/libs.versions.toml",
+          "targetSdk": 36
+        },
+        {
+          "compileSdk": 36,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-sequoia-15.6-xcode-26.2",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "26.2",
+          "expo": "55.0.32",
+          "iosDeploymentTarget": "15.1",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@55.0.44/ios/Podfile",
+          "pluginFallbackCompileSdk": 35,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@55.0.28/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 35,
+          "reactNative": "0.83.10",
+          "sdk": 55,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.83.10/gradle/libs.versions.toml",
+          "targetSdk": 36
+        },
+        {
+          "compileSdk": 36,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-tahoe-26.4-xcode-26.4",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "26.4",
+          "expo": "56.0.24",
+          "iosDeploymentTarget": "16.4",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@56.0.38/ios/Podfile",
+          "pluginFallbackCompileSdk": 35,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@56.0.24/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 35,
+          "reactNative": "0.85.3",
+          "sdk": 56,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.85.3/gradle/libs.versions.toml",
+          "targetSdk": 36
+        },
+        {
+          "compileSdk": 36,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-tahoe-26.5-xcode-26.6",
+          "easPrerelease": false,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "26.6",
+          "expo": "57.0.32",
+          "iosDeploymentTarget": "16.4",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@57.0.34/ios/Podfile",
+          "pluginFallbackCompileSdk": 35,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@57.0.17/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 35,
+          "reactNative": "0.86.3",
+          "sdk": 57,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.86.3/gradle/libs.versions.toml",
+          "targetSdk": 36
+        },
+        {
+          "compileSdk": 37,
+          "confidence": "certain",
+          "easConfidence": "inferred",
+          "easImage": "macos-tahoe-26.6-xcode-27.1",
+          "easPrerelease": true,
+          "easSource": "https://docs.expo.dev/build-reference/infrastructure/",
+          "easXcode": "27.1",
+          "expo": "58.0.23",
+          "iosDeploymentTarget": "16.4",
+          "iosDeploymentTargetSource": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@58.0.32/ios/Podfile",
+          "pluginFallbackCompileSdk": 37,
+          "pluginFallbackSource": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@58.0.17/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt",
+          "pluginFallbackTargetSdk": 36,
+          "reactNative": "0.88.1",
+          "sdk": 58,
+          "source": "https://cdn.jsdelivr.net/npm/react-native@0.88.1/gradle/libs.versions.toml",
+          "targetSdk": 36
+        }
+      ],
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '35') targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '34')",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@52.0.79/android/build.gradle"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"35\" compileSdk = \"35\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.79.6/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"36\" compileSdk = \"36\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.81.5/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"36\" compileSdk = \"36\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.83.10/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"36\" compileSdk = \"36\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.85.3/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"36\" compileSdk = \"36\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.86.3/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "targetSdk = \"36\" compileSdk = \"37\"",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/react-native@0.88.1/gradle/libs.versions.toml"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"35\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"35\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@2.1.15/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"35\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"35\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@3.0.28/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"35\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"35\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@55.0.28/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"35\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"35\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@56.0.24/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"35\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"35\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@57.0.17/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "getVersionOrDefault(\"compileSdk\", \"37\")) } val targetSdk = extra.setIfNotExist(\"targetSdkVersion\") { Integer.parseInt(versionCatalogs.getVersionOrDefault(\"targetSdk\", \"36\"))",
+          "retrieved": "2026-11-11",
+          "url": "https://cdn.jsdelivr.net/npm/expo-modules-autolinking@58.0.17/android/expo-gradle-plugin/expo-autolinking-plugin/src/main/kotlin/expo/modules/plugin/ExpoRootProjectPlugin.kt"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "When using the auto alias, the build image will be selected based on the project configuration, Expo SDK version, and React Native version.",
+          "retrieved": "2026-11-11",
+          "url": "https://docs.expo.dev/build-reference/infrastructure/"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '15.1'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@52.0.79/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '15.1'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@53.0.42/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '15.1'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@54.0.54/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '15.1'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@55.0.44/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '16.4'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@56.0.38/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '16.4'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@57.0.34/ios/Podfile"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "platform :ios, podfile_properties['ios.deploymentTarget'] || '16.4'",
+          "retrieved": "2026-11-12",
+          "url": "https://cdn.jsdelivr.net/npm/expo-template-bare-minimum@58.0.32/ios/Podfile"
+        }
+      ],
+      "title": "Expo SDK defaults for Android SDK levels, the EAS iOS image and the iOS deployment target",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-25"
+      }
+    },
+    "gha-runner-xcode": {
+      "description": "Each macOS runner label in the runner-images README, the image it selects, that image's default Xcode and every installed Xcode. Retired and deprecated images are left out; a label not here resolves to unknown.",
+      "history": [
+        {
+          "change": "created",
+          "date": "2026-11-11"
+        }
+      ],
+      "id": "gha-runner-xcode",
+      "key": "label",
+      "rows": [
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "macOS 15 Arm64",
+          "installed": [
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1",
+            "16.4",
+            "16.3",
+            "16.2",
+            "16.1",
+            "16.0"
+          ],
+          "label": "macos-15",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md",
+          "xcode": "16.4"
+        },
+        {
+          "arch": "x64",
+          "confidence": "certain",
+          "image": "macOS 15",
+          "installed": [
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1",
+            "16.4",
+            "16.3",
+            "16.2",
+            "16.1",
+            "16.0"
+          ],
+          "label": "macos-15-intel",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md",
+          "xcode": "16.4"
+        },
+        {
+          "arch": "x64",
+          "confidence": "certain",
+          "image": "macOS 15",
+          "installed": [
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1",
+            "16.4",
+            "16.3",
+            "16.2",
+            "16.1",
+            "16.0"
+          ],
+          "label": "macos-15-large",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md",
+          "xcode": "16.4"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "macOS 15 Arm64",
+          "installed": [
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1",
+            "16.4",
+            "16.3",
+            "16.2",
+            "16.1",
+            "16.0"
+          ],
+          "label": "macos-15-xlarge",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md",
+          "xcode": "16.4"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "macOS 26 Arm64",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-26",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "x64",
+          "confidence": "certain",
+          "image": "macOS 26",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-26-intel",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "x64",
+          "confidence": "certain",
+          "image": "macOS 26",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-26-large",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "macOS 26 Arm64",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-26-xlarge",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "macOS 26 Arm64",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-latest",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "x64",
+          "confidence": "certain",
+          "image": "macOS 26",
+          "installed": [
+            "26.6",
+            "26.5",
+            "26.4.1",
+            "26.3",
+            "26.2",
+            "26.1.1",
+            "26.0.1"
+          ],
+          "label": "macos-latest-large",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": false,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md",
+          "xcode": "26.6"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "Xcode 27",
+          "installed": [
+            "27.2",
+            "27.1",
+            "27.0"
+          ],
+          "label": "xcode-27",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": true,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md",
+          "xcode": "27.1"
+        },
+        {
+          "arch": "arm64",
+          "confidence": "certain",
+          "image": "Xcode 27",
+          "installed": [
+            "27.2",
+            "27.1",
+            "27.0"
+          ],
+          "label": "xcode-27-xlarge",
+          "labelSource": "https://github.com/actions/runner-images/blob/main/README.md",
+          "preview": true,
+          "source": "https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md",
+          "xcode": "27.1"
+        }
+      ],
+      "sources": [
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "xcode-27 or xcode-27-xlarge",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "27.1 (default) | 27A9275",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "macos-latest-large, macos-26-intel, macos-26-large",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "26.6 (default) | 17F113",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "macos-latest, macos-26 or macos-26-xlarge",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "26.6 (default) | 17F113",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "macos-15-large, or macos-15-intel",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "16.4 (default) | 16F6",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "macos-15, or macos-15-xlarge",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/README.md"
+        },
+        {
+          "archive": null,
+          "kind": "primary",
+          "quote": "16.4 (default) | 16F6",
+          "retrieved": "2026-11-11",
+          "url": "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md"
+        }
+      ],
+      "title": "GitHub-hosted macOS runner labels and their Xcode",
+      "verification": {
+        "by": "guptaaman678",
+        "last_verified": "2026-11-11",
+        "next_check": "2026-11-18"
+      }
+    }
+  }
+}

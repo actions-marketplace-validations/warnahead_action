@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Existing apps must target API 35 to stay available to... | warnahead</title>
+    <meta name="description" content="Google Play: Existing apps must target API 35 to stay available to new users. 2026-08-31.">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header>
+      <nav aria-label="Site">
+        <a href="/">warnahead</a>
+      </nav>
+    </header>
+    <main id="content">
+      <nav aria-label="Breadcrumb"><a href="/">All deadlines</a></nav>
+      <h1>Existing apps must target API 35 to stay available to new users</h1>
+      <dl>
+        <dt>When</dt>
+        <dd><time datetime="2026-08-31">2026-08-31</time></dd>
+        <dt>Status</dt>
+        <dd>In effect</dd>
+        <dt>Platform</dt>
+        <dd>Google Play</dd>
+        <dt>Who</dt>
+        <dd>Android phone and tablet apps already published on Google Play (Wear OS needs API 34, Android TV API 33, Android XR API 34, Android Automotive OS API 32)</dd>
+        <dt>What happens</dt>
+        <dd>Hides the app from users. Existing apps must target Android 15 (API level 35) or higher to remain available to new users on devices running Android OS higher than your app&#39;s target API level.</dd>
+        <dt>Extension</dt>
+        <dd>Until 2026-11-01: On request in Play Console</dd>
+      </dl>
+      <section aria-labelledby="fix">
+        <h2 id="fix">How to fix</h2>
+        <ul>
+          <li><strong>Expo with a config plugin override:</strong> Set android.targetSdkVersion to 35 or higher in expo-build-properties (36 to publish updates), or remove it.</li>
+          <li><strong>Expo (Continuous Native Generation):</strong> Upgrade to an Expo SDK whose default targetSdk is 35 or higher (table expo-sdk-defaults).</li>
+          <li><strong>Gradle (native Android):</strong> Set targetSdk = 35 or higher where the project defines it (36 to publish updates).</li>
+        </ul>
+      </section>
+      <section aria-labelledby="sources">
+        <h2 id="sources">Sources</h2>
+        <ol>
+          <li>
+            <p><a href="https://support.google.com/googleplay/android-developer/answer/11926878">https://support.google.com/googleplay/android-developer/answer/11926878</a> (primary source, retrieved 2026-11-11)</p>
+            <blockquote cite="https://support.google.com/googleplay/android-developer/answer/11926878"><p>Existing apps must target Android 15 (API level 35) or higher to remain available to new users on devices running Android OS higher than your app&#39;s target API level.</p></blockquote>
+          </li>
+          <li>
+            <p><a href="https://support.google.com/googleplay/android-developer/answer/11926878">https://support.google.com/googleplay/android-developer/answer/11926878</a> (primary source, retrieved 2026-11-11)</p>
+            <blockquote cite="https://support.google.com/googleplay/android-developer/answer/11926878"><p>existing apps (across mobile and Android Auto) must target Android 15 (API level 35) or higher by August 31, 2026</p></blockquote>
+          </li>
+        </ol>
+      </section>
+      <section aria-labelledby="verification">
+        <h2 id="verification">Verification</h2>
+        <dl>
+          <dt>Last verified</dt>
+          <dd><time datetime="2026-11-11">2026-11-11</time></dd>
+          <dt>Next check</dt>
+          <dd><time datetime="2026-11-18">2026-11-18</time></dd>
+        </dl>
+      </section>
+      <section aria-labelledby="history">
+        <h2 id="history">History</h2>
+        <ul>
+          <li><time datetime="2026-11-11">2026-11-11</time>: created</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p><a href="/">warnahead</a> by <a href="https://github.com/guptaaman678">Aman Gupta</a>. Not affiliated with or endorsed by Google, Apple, Expo or GitHub.</p>
+      <p>A clean result means nothing warnahead can detect, not that nothing is due. Check the sources before you rely on a date.</p>
+      <ul class="links">
+        <li><a href="https://github.com/warnahead/action/blob/main/EULA.md">EULA</a></li>
+        <li><a href="https://github.com/warnahead/action/blob/main/DATA-TERMS.md">Data terms</a></li>
+        <li><a href="/data/v1/deadlines.json">Dataset (JSON)</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
