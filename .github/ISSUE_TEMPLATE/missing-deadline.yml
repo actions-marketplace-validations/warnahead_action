@@ -1,0 +1,51 @@
+name: Missing deadline
+description: A store, CI or runtime deadline that warnahead does not know about
+title: '[data] '
+labels: [data, missing-deadline]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. warnahead only lists deadlines with a primary source, so please link the
+        platform's own announcement and quote the sentence with the date.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Google Play
+        - App Store
+        - GitHub Actions
+        - Runtime or framework (Node.js, React Native, Expo, Xcode)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: The deadline
+      description: What changes, from which date, who it applies to, and what happens when it is missed
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: Quote
+      description: The sentence on that page with the date, copied exactly
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: detect
+    attributes:
+      label: How a repository shows it is affected
+      description: Optional. Which file or setting would tell warnahead that a project is affected
+    validations:
+      required: false

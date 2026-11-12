@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Smoke App",
+    "slug": "smoke-app",
+    "android": {
+      "package": "com.example.smokeapp"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "targetSdkVersion": 35
+          }
+        }
+      ]
+    ]
+  }
+}

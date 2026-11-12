@@ -1,0 +1,57 @@
+name: self-test
+
+# Runs this repository's own action (uses: ./) over the synthetic fixtures in report-only mode,
+# which opens no issues and makes no GitHub API calls.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - name: No action bundle on this ref
+        if: hashFiles('dist/action.mjs') == ''
+        run: echo "no dist/action.mjs yet; the self-test starts with the first release"
+      - name: Run the action on a repository with a deadline due
+        id: due
+        if: hashFiles('dist/action.mjs') != ''
+        uses: ./
+        with:
+          path: test-fixtures/expo-override-35
+          mode: report-only
+      - name: Run the action on a repository without a mobile app
+        id: clean
+        if: hashFiles('dist/action.mjs') != ''
+        uses: ./
+        with:
+          path: test-fixtures/no-mobile
+          mode: report-only
+      - name: Check the outputs
+        if: hashFiles('dist/action.mjs') != ''
+        env:
+          DUE_COUNT: ${{ steps.due.outputs.due-count }}
+          DUE_JSON: ${{ steps.due.outputs.findings-json }}
+          CLEAN_COUNT: ${{ steps.clean.outputs.due-count }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const due = Number(process.env.DUE_COUNT);
+            const clean = Number(process.env.CLEAN_COUNT);
+            const report = JSON.parse(fs.readFileSync(process.env.DUE_JSON, "utf8"));
+            const entries = report.apps.flatMap((a) => a.findings).map((f) => f.entry + ":" + f.result);
+            const problems = [];
+            if (!(due >= 1)) problems.push("due-count " + process.env.DUE_COUNT + " on expo-override-35, expected at least 1");
+            if (clean !== 0) problems.push("due-count " + process.env.CLEAN_COUNT + " on no-mobile, expected 0");
+            if (!entries.includes("google-play/target-api-2026-updates:affected")) problems.push("google-play/target-api-2026-updates not affected");
+            if (problems.length > 0) { console.log(problems.join("\n")); process.exit(1); }
+            console.log("self-test: PASS due-count " + due + " and 0, target API finding affected");
+          '
