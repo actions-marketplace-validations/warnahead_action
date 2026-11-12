@@ -1,0 +1,54 @@
+name: Bug report
+description: The CLI or the Action did something wrong
+title: '[bug] '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Please do not paste secrets, tokens or private code. A small made-up repository
+        that shows the problem is the most useful thing you can share.
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options:
+        - CLI (npx warnahead)
+        - GitHub Action (warnahead/action)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `npx warnahead --version`, or the Action ref you use
+    validations:
+      required: true
+  - type: textarea
+    id: run
+    attributes:
+      label: Command or workflow step
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: The output, or the issue the Action opened
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Node version for the CLI, runner image for the Action
+    validations:
+      required: false

@@ -1,0 +1,47 @@
+name: Wrong date or rule
+description: A deadline in the dataset has the wrong date, wording, scope or consequence
+title: '[data] '
+labels: [data, wrong-date]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Every entry needs a primary source, so a link to the platform's own page and a
+        quote of the sentence that shows the correct rule are what let us fix it.
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: The entry id or its page on warnahead.pages.dev
+      placeholder: google-play/target-api-2026-updates
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong
+      description: The date, wording, who it applies to, or what happens when it is missed
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source
+      description: A link to the platform's own page (Google Play, Apple, GitHub, Expo, a runtime's release page)
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: Quote
+      description: The sentence on that page that shows the correct rule, copied exactly
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+    validations:
+      required: false

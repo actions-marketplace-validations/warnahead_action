@@ -1,0 +1,26 @@
+{
+  "fixtures": [
+    {
+      "dir": "expo-override-35",
+      "failWithin": 30,
+      "exit": 1,
+      "apps": 1,
+      "findings": [
+        {
+          "entry": "google-play/target-api-2026-updates",
+          "result": "affected",
+          "group": "due",
+          "confidence": "certain",
+          "evidence": { "file": "app.json", "line": 13 }
+        }
+      ]
+    },
+    {
+      "dir": "no-mobile",
+      "failWithin": 30,
+      "exit": 0,
+      "apps": 0,
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+name: release
+
+# Stages the npm release of the version in package.json and tags it once it is published.
+# State logic (.github/scripts/release-state.mjs):
+#   not on npm, not tagged -> stage it with provenance; a maintainer approves it with 2FA
+#   on npm, not tagged     -> tag v<version> and move v<major> (run again after the approval)
+#   on npm and tagged      -> nothing to do
+# Pull requests and dispatches with dry-run only print the decision.
+# Staging waits while the repository is private: provenance needs a public repository.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Only print what would happen
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  state:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      action: ${{ steps.state.outputs.action }}
+      version: ${{ steps.state.outputs.version }}
+      major: ${{ steps.state.outputs.major }}
+      dry-run: ${{ steps.mode.outputs.dry-run }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Mode
+        id: mode
+        env:
+          EVENT: ${{ github.event_name }}
+          DRY_INPUT: ${{ inputs.dry-run }}
+        run: |
+          if [ "$EVENT" = "pull_request" ] || [ "$DRY_INPUT" = "true" ]; then
+            echo "dry-run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "dry-run=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Decide
+        id: state
+        run: node .github/scripts/release-state.mjs
+      - name: Summary
+        env:
+          ACTION: ${{ steps.state.outputs.action }}
+          VERSION: ${{ steps.state.outputs.version }}
+          DRY: ${{ steps.mode.outputs.dry-run }}
+          PRIVATE: ${{ github.event.repository.private }}
+        run: |
+          {
+            echo "release state: $ACTION (version ${VERSION:-none})"
+            if [ "$DRY" = "true" ]; then echo "dry run: nothing staged or tagged"; fi
+            if [ "$ACTION" = "stage" ] && [ "$PRIVATE" = "true" ]; then
+              echo "staging waits until the repository is public"
+            fi
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Conflict
+        if: steps.state.outputs.action == 'conflict'
+        run: |
+          echo "the version is tagged but not on npm; look at it before releasing"
+          exit 1
+
+  stage:
+    needs: state
+    if: needs.state.outputs.action == 'stage' && needs.state.outputs.dry-run == 'false' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Stage the release (approve with npm stage approve and 2FA)
+        run: npx --yes npm@11.21.2 stage publish --provenance --access public
+
+  tag:
+    needs: state
+    if: needs.state.outputs.action == 'tag' && needs.state.outputs.dry-run == 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Tag v${{ needs.state.outputs.version }} and move v${{ needs.state.outputs.major }}
+        env:
+          VERSION: ${{ needs.state.outputs.version }}
+          MAJOR: ${{ needs.state.outputs.major }}
+        run: |
+          git tag "v$VERSION"
+          git tag --force "v$MAJOR"
+          git push origin "refs/tags/v$VERSION"
+          git push --force origin "refs/tags/v$MAJOR"
